@@ -1,5 +1,5 @@
 # PIC16F1827 BASE Project.
-===========================
+====
 This is a base & demo sample project for PIC16F1827.
 
 ## Description
@@ -19,7 +19,7 @@ Other references.
 
 ## Demo
 
-![](https://github.com/ClockWorks001/PIC16F1827_BASE/tree/master/DEMO/PIC16F1827_BASE_DEMO001.gif)
+![Alt text](/DEMO/PIC16F1827_BASE_DEMO001.gif)
 
 ## Prerequisites
 
@@ -42,10 +42,10 @@ Also, I use the [EAGLE PCB CAD][6] to draw the electric circuit schematic.
 
 ## Author
 
-Hiroshi Murakami
-<https://github.com/ClockWorks001>
-<https://www.facebook.com/clockworks001>
-<http://clockworks01.blogspot.jp/>
+Hiroshi Murakami  
+<https://github.com/ClockWorks001>  
+<https://www.facebook.com/clockworks001>  
+<http://clockworks01.blogspot.jp/>  
 
 
 
