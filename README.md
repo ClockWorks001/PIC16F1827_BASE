@@ -44,9 +44,6 @@ Also, I use the [EAGLE PCB CAD][6] to draw the electric circuit schematic.
 
 Hiroshi Murakami  
 <https://github.com/ClockWorks001>  
-<https://www.facebook.com/clockworks001>  
-<http://clockworks01.blogspot.jp/>  
-
 
 
 [1]: http://www.microchip.com/wwwproducts/Devices.aspx?dDocName=en538963 "PIC16F1827"
