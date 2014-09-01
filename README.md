@@ -14,7 +14,7 @@ I use following peripherals for this BASE project.
   *GPIO*(input x2 for Switches, output x3 for LED1, LED2, LED3)
 
 Other references.
-  <https://docs.google.com/spreadsheets/d/18XYdP4BuEywOxAiw3yl_UnsTUrufz0ivfIZZy-oGmS4/edit?usp=sharing>
+  [Google Sheets](/NOTE/PIC16F1827_BASE.gsheet)  
 
 
 ## Demo
@@ -44,8 +44,6 @@ Also, I use the [EAGLE PCB CAD][6] to draw the electric circuit schematic.
 
 Hiroshi Murakami  
 <https://github.com/ClockWorks001>  
-<https://www.facebook.com/clockworks001>  
-<http://clockworks01.blogspot.jp/>  
 
 
 
