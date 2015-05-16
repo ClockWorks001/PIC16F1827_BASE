@@ -8,11 +8,11 @@ The [PIC16F1827][1] is a very low-cost 8-bit microcontroller with a good
 amount of RAM, many peripherals. CPU Speed 8 MIPS / 32Mhz. RAM 384 Bytes. ROM 7 KBytes.
 
 I use following peripherals for this BASE project.  
-  *TMR1     :with interrupt. LED3 is blinked at 1 second interval.  
-  *TMR2     :for PWM.  
-  *ECCP2    :with TMR2. I use it for PWM output. Outputs are LED4, LED5. They are blinked at 1 second interval.  
-  *GPIO     :input x2 for Switches, output x3 for LED1, LED2, LED3.  
-  *EUSART   :serial console with 57600bps / NRZ.  
+ * TMR1     :with interrupt. LED3 is blinked at 1 second interval.  
+ * TMR2     :for PWM.  
+ * ECCP2    :with TMR2. I use it for PWM output. Outputs are LED4, LED5. They are blinked at 1 second interval.  
+ * GPIO     :input x2 for Switches, output x3 for LED1, LED2, LED3.  
+ * EUSART   :serial console with 57600bps / NRZ.  
   
 Other references.
   <https://docs.google.com/spreadsheets/d/18XYdP4BuEywOxAiw3yl_UnsTUrufz0ivfIZZy-oGmS4/edit?usp=sharing>
