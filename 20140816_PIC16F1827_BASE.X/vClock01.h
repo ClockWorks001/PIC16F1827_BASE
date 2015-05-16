@@ -26,4 +26,4 @@
 void vClock01_Clear();
 void vClock01_interrupt();
 void vClock01();
-
+char cFlag10mSec_ON();

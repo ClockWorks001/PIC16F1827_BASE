@@ -8,21 +8,21 @@
     pin_manager.h
 
   @Summary:
-    This is the Pin Manager file generated using MPLAB® Code Configurator
+    This is the Pin Manager file generated using MPLABÂ® Code Configurator
 
   @Description:
     This header file provides implementations for pin APIs for all pins selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.0.1
+        Product Revision  :  MPLABÂ® Code Configurator - v2.25
         Device            :  PIC16F1827
         Version           :  1.01
     The generated drivers are tested against the following:
-        Compiler          :  XC8 v1.31
-        MPLAB             :  MPLAB X 2.10
+        Compiler          :  XC8 v1.34
+        MPLAB             :  MPLAB X v2.35 or v3.00
 */
 
 /*
-Copyright (c) 2013 - 2014 released Microchip Technology Inc.  All rights reserved.
+Copyright (c) 2013 - 2015 released Microchip Technology Inc.  All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
@@ -129,16 +129,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 #define IO_RA4_SetAnalogMode()   do { ANSA4 = 1; } while(0)
 #define IO_RA4_SetDigitalMode()   do { ANSA4 = 0; } while(0)
-// get/set IO_RA5 aliases
-#define IO_RA5_TRIS               TRISA5
-#define IO_RA5_PORT               RA5
-#define IO_RA5_WPU                WPUA5
-#define IO_RA5_GetValue()         RA5
-#define IO_RA5_SetDigitalInput()    do { TRISA5 = 1; } while(0)
-#define IO_RA5_SetDigitalOutput()   do { TRISA5 = 0; } while(0)
-
-#define IO_RA5_SetPullup()    do { WPUA5 = 1; } while(0)
-#define IO_RA5_ResetPullup()   do { WPUA5 = 0; } while(0)
 // get/set P2B aliases
 #define P2B_TRIS               TRISA6
 #define P2B_LAT                LATA6
@@ -175,40 +165,40 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 #define IO_RB0_SetPullup()    do { WPUB0 = 1; } while(0)
 #define IO_RB0_ResetPullup()   do { WPUB0 = 0; } while(0)
-// get/set IO_RB1 aliases
-#define IO_RB1_TRIS               TRISB1
-#define IO_RB1_LAT                LATB1
-#define IO_RB1_PORT               RB1
-#define IO_RB1_WPU                WPUB1
-#define IO_RB1_ANS                ANSB1
-#define IO_RB1_SetHigh()    do { LATB1 = 1; } while(0)
-#define IO_RB1_SetLow()   do { LATB1 = 0; } while(0)
-#define IO_RB1_Toggle()   do { LATB1 = ~LATB1; } while(0)
-#define IO_RB1_GetValue()         RB1
-#define IO_RB1_SetDigitalInput()    do { TRISB1 = 1; } while(0)
-#define IO_RB1_SetDigitalOutput()   do { TRISB1 = 0; } while(0)
+// get/set RX aliases
+#define RX_TRIS               TRISB1
+#define RX_LAT                LATB1
+#define RX_PORT               RB1
+#define RX_WPU                WPUB1
+#define RX_ANS                ANSB1
+#define RX_SetHigh()    do { LATB1 = 1; } while(0)
+#define RX_SetLow()   do { LATB1 = 0; } while(0)
+#define RX_Toggle()   do { LATB1 = ~LATB1; } while(0)
+#define RX_GetValue()         RB1
+#define RX_SetDigitalInput()    do { TRISB1 = 1; } while(0)
+#define RX_SetDigitalOutput()   do { TRISB1 = 0; } while(0)
 
-#define IO_RB1_SetPullup()    do { WPUB1 = 1; } while(0)
-#define IO_RB1_ResetPullup()   do { WPUB1 = 0; } while(0)
-#define IO_RB1_SetAnalogMode()   do { ANSB1 = 1; } while(0)
-#define IO_RB1_SetDigitalMode()   do { ANSB1 = 0; } while(0)
-// get/set IO_RB2 aliases
-#define IO_RB2_TRIS               TRISB2
-#define IO_RB2_LAT                LATB2
-#define IO_RB2_PORT               RB2
-#define IO_RB2_WPU                WPUB2
-#define IO_RB2_ANS                ANSB2
-#define IO_RB2_SetHigh()    do { LATB2 = 1; } while(0)
-#define IO_RB2_SetLow()   do { LATB2 = 0; } while(0)
-#define IO_RB2_Toggle()   do { LATB2 = ~LATB2; } while(0)
-#define IO_RB2_GetValue()         RB2
-#define IO_RB2_SetDigitalInput()    do { TRISB2 = 1; } while(0)
-#define IO_RB2_SetDigitalOutput()   do { TRISB2 = 0; } while(0)
+#define RX_SetPullup()    do { WPUB1 = 1; } while(0)
+#define RX_ResetPullup()   do { WPUB1 = 0; } while(0)
+#define RX_SetAnalogMode()   do { ANSB1 = 1; } while(0)
+#define RX_SetDigitalMode()   do { ANSB1 = 0; } while(0)
+// get/set TX aliases
+#define TX_TRIS               TRISB2
+#define TX_LAT                LATB2
+#define TX_PORT               RB2
+#define TX_WPU                WPUB2
+#define TX_ANS                ANSB2
+#define TX_SetHigh()    do { LATB2 = 1; } while(0)
+#define TX_SetLow()   do { LATB2 = 0; } while(0)
+#define TX_Toggle()   do { LATB2 = ~LATB2; } while(0)
+#define TX_GetValue()         RB2
+#define TX_SetDigitalInput()    do { TRISB2 = 1; } while(0)
+#define TX_SetDigitalOutput()   do { TRISB2 = 0; } while(0)
 
-#define IO_RB2_SetPullup()    do { WPUB2 = 1; } while(0)
-#define IO_RB2_ResetPullup()   do { WPUB2 = 0; } while(0)
-#define IO_RB2_SetAnalogMode()   do { ANSB2 = 1; } while(0)
-#define IO_RB2_SetDigitalMode()   do { ANSB2 = 0; } while(0)
+#define TX_SetPullup()    do { WPUB2 = 1; } while(0)
+#define TX_ResetPullup()   do { WPUB2 = 0; } while(0)
+#define TX_SetAnalogMode()   do { ANSB2 = 1; } while(0)
+#define TX_SetDigitalMode()   do { ANSB2 = 0; } while(0)
 // get/set IO_RB3 aliases
 #define IO_RB3_TRIS               TRISB3
 #define IO_RB3_LAT                LATB3

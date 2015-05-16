@@ -13,16 +13,16 @@
   @Description:
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.0.1
+        Product Revision  :  MPLAB® Code Configurator - v2.25
         Device            :  PIC16F1827
         Version           :  1.02
     The generated drivers are tested against the following:
-        Compiler          :  XC8 v1.31
-        MPLAB             :  MPLAB X 2.10
+        Compiler          :  XC8 v1.34
+        MPLAB             :  MPLAB X v2.35 or v3.00
 */
 
 /*
-Copyright (c) 2013 - 2014 released Microchip Technology Inc.  All rights reserved.
+Copyright (c) 2013 - 2015 released Microchip Technology Inc.  All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
@@ -48,12 +48,15 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #define	MCC_H
 #include <xc.h>
 #include "pin_manager.h"
+#include <stdint.h>
+#include <stdbool.h>
 #include "interrupt_manager.h"
 #include "tmr2.h"
 #include "epwm2.h"
 #include "tmr1.h"
+#include "eusart.h"
 
-#define _XTAL_FREQ  125000
+#define _XTAL_FREQ  16000000
 
 /**
  * @Param
@@ -80,6 +83,7 @@ void SYSTEM_Initialize(void);
     OSCILLATOR_Initialize(void);
  */
 void OSCILLATOR_Initialize(void);
+
 
 #endif	/* MCC_H */
 /**

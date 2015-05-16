@@ -35,6 +35,20 @@ void vClock01_interrupt()
 }
 
 /*******************************
+*  check & clear 10msec count
+*******************************/
+char cFlag10mSec_ON()
+{
+    if(cFlag10mSec >= 1){
+            cFlag10mSec = 0;
+            return 1;
+    } else {
+            return 0;
+    }
+
+}
+
+/*******************************
 *  時間カウント処理
 *******************************/
 void vClock01()

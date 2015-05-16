@@ -1,17 +1,17 @@
 /**
-  ECCP2 Generated Driver File
+  EUSART Generated Driver API Header File
 
   @Company
     Microchip Technology Inc.
 
   @File Name
-    eccp2.c
+    eusart.h
 
   @Summary
-    This is the generated driver implementation file for the ECCP2 driver using MPLAB® Code Configurator
+    This is the generated header file for the EUSART driver using MPLAB® Code Configurator
 
   @Description
-    This source file provides APIs for ECCP2.
+    This header file provides APIs for driver for EUSART.
     Generation Information :
         Product Revision  :  MPLAB® Code Configurator - v2.25
         Device            :  PIC16F1827
@@ -44,15 +44,17 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
 */
 
-#ifndef _EPWM2_H
-#define _EPWM2_H
+#ifndef _EUSART_H
+#define _EUSART_H
 
 /**
   Section: Included Files
 */
 
 #include <xc.h>
+#include <stdbool.h>
 #include <stdint.h>
+#include <stdio.h>
 
 #ifdef __cplusplus  // Provide C++ Compatibility
 
@@ -60,18 +62,24 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 #endif
 
+
 /**
-  Section: EPWM Module APIs
+  Section: Macro Declarations
 */
 
-  /**
+#define EUSART_DataReady  (PIR1bits.RCIF)
+
+/**
+  Section: EUSART APIs
+*/
+
+/**
   @Summary
-    Initializes the EPWM2
+    Initialization routine that takes inputs from the EUSART GUI.
 
   @Description
-    This routine initializes the EPWM2_Initialize.
-    This routine must be called before any other ECCP2 routine is called.
-    This routine should only be called once during system initialization.
+    This routine initializes the EUSART driver.
+    This routine must be called before any other EUSART routine is called.
 
   @Preconditions
     None
@@ -84,42 +92,48 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
   @Comment
     
-
- @Example
-    <code>
-    uint16_t dutycycle;
-
-    EPWM2_Initialize();
-    EPWM2_LoadDutyValue(dutycycle);
-    </code>
- */
-void EPWM2_Initialize(void);
+*/
+void EUSART_Initialize(void);
 
 /**
   @Summary
-    Loads 16-bit duty cycle.
+    Read a byte of data from the EUSART.
 
   @Description
-    This routine loads the 16 bit duty cycle value.
+    This routine reads a byte of data from the EUSART.
 
   @Preconditions
-    EPWM2_Initialize() function should have been called before calling this function.
+    EUSART_Initialize() function should have been called
+    before calling this function. The transfer status should be checked to see
+    if the receiver is not empty before calling this function.
 
   @Param
-    Pass in 16bit duty cycle value.
+    None
+
+  @Returns
+    A data byte received by the driver.
+*/
+uint8_t EUSART_Read(void);
+
+ /**
+  @Summary
+    Writes a byte of data to the EUSART.
+
+  @Description
+    This routine writes a byte of data to the EUSART.
+
+  @Preconditions
+    EUSART_Initialize() function should have been called
+    before calling this function. The transfer status should be checked to see
+    if transmitter is not busy before calling this function.
+
+  @Param
+    txData  - Data byte to write to the EUSART
 
   @Returns
     None
-
-  @Example
-    <code>
-    uint16_t dutycycle;
-
-    EPWM2_Initialize();
-    EPWM2_LoadDutyValue(dutycycle);
-    </code>
 */
-void EPWM2_LoadDutyValue(uint16_t dutyValue);
+void EUSART_Write(uint8_t txData);
 
 #ifdef __cplusplus  // Provide C++ Compatibility
 
@@ -127,7 +141,7 @@ void EPWM2_LoadDutyValue(uint16_t dutyValue);
 
 #endif
 
-#endif  // _EPWM2_H
+#endif  // _EUSART_H
 /**
  End of File
 */

@@ -8,21 +8,21 @@
     pin_manager.c
 
   Summary:
-    This is the Pin Manager file generated using MPLAB® Code Configurator
+    This is the Pin Manager file generated using MPLABÂ® Code Configurator
 
   Description:
     This header file provides implementations for pin APIs for all pins selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.0.1
+        Product Revision  :  MPLABÂ® Code Configurator - v2.25
         Device            :  PIC16F1827
         Driver Version    :  1.02
     The generated drivers are tested against the following:
-        Compiler          :  XC8 v1.31
-        MPLAB             :  MPLAB X 2.10
+        Compiler          :  XC8 v1.34
+        MPLAB             :  MPLAB X v2.35 or v3.00
 */
 
 /*
-Copyright (c) 2013 - 2014 released Microchip Technology Inc.  All rights reserved.
+Copyright (c) 2013 - 2015 released Microchip Technology Inc.  All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
@@ -50,12 +50,12 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 void PIN_MANAGER_Initialize(void)
 {
     LATA = 0x00;
-    TRISA = 0x30;
+    TRISA = 0x38;
     ANSELA = 0x00;
     WPUA = 0x00;
 
     LATB = 0x00;
-    TRISB = 0xC0;
+    TRISB = 0xC6;
     ANSELB = 0x00;
     WPUB = 0x00;
 
@@ -64,6 +64,8 @@ void PIN_MANAGER_Initialize(void)
     APFCON0 = 0x18;
 
     APFCON1 = 0x00;
+
+        
 }
 /**
  End of File

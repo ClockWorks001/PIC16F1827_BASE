@@ -13,16 +13,16 @@
   @Description
     This source file provides APIs for TMR2.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.0.1
+        Product Revision  :  MPLAB® Code Configurator - v2.25
         Device            :  PIC16F1827
         Driver Version    :  2.00
     The generated drivers are tested against the following:
-        Compiler          :  XC8 v1.31
-        MPLAB             :  MPLAB X 2.10
+        Compiler          :  XC8 v1.34
+        MPLAB             :  MPLAB X v2.35 or v3.00
 */
 
 /*
-Copyright (c) 2013 - 2014 released Microchip Technology Inc.  All rights reserved.
+Copyright (c) 2013 - 2015 released Microchip Technology Inc.  All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
@@ -59,8 +59,8 @@ void TMR2_Initialize(void)
 {
     // Set TMR2 to the options selected in the User Interface
 
-    // TMR2ON off; T2CKPS 1:64; T2OUTPS 1:1; 
-    T2CON = 0x03;
+    // TMR2ON off; T2CKPS 1:64; T2OUTPS 1:8; 
+    T2CON = 0x3B;
 
     // PR2 255; 
     PR2 = 0xFF;
@@ -107,7 +107,13 @@ void TMR2_LoadPeriodRegister(uint8_t periodVal)
 bool TMR2_HasOverflowOccured(void)
 {
     // check if  overflow has occurred by checking the TMRIF bit
-    return(PIR1bits.TMR2IF);
+    bool status = PIR1bits.TMR2IF;
+    if(status)
+    {
+        // Clearing IF flag.
+        PIR1bits.TMR2IF = 0;
+    }
+    return status;
 }
 /**
   End of File

@@ -13,16 +13,16 @@
   @Description
     This header file provides APIs for TMR2.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.0.1
+        Product Revision  :  MPLAB® Code Configurator - v2.25
         Device            :  PIC16F1827
         Driver Version    :  2.00
     The generated drivers are tested against the following:
-        Compiler          :  XC8 v1.31
-        MPLAB             :  MPLAB X 2.10
+        Compiler          :  XC8 v1.34
+        MPLAB             :  MPLAB X v2.35 or v3.00
 */
 
 /*
-Copyright (c) 2013 - 2014 released Microchip Technology Inc.  All rights reserved.
+Copyright (c) 2013 - 2015 released Microchip Technology Inc.  All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
@@ -295,7 +295,7 @@ void TMR2_LoadPeriodRegister(uint8_t periodVal);
 
   @Description
     This function is called to check for the timer match flag.
-    This function is usd in timer polling method.
+    This function is used in timer polling method.
 
   @Preconditions
     Initialize  the TMR2 module before calling this routine.
@@ -304,8 +304,8 @@ void TMR2_LoadPeriodRegister(uint8_t periodVal);
     None
 
   @Returns
-    true - timer match has occured.
-    false - timer match has not occured.
+    true - timer match has occurred.
+    false - timer match has not occurred.
 
   @Example
     <code>
@@ -315,9 +315,6 @@ void TMR2_LoadPeriodRegister(uint8_t periodVal);
         if(TMR2_HasOverflowOccured())
         {
             // Do something else...
-
-            // clear the TMR2 match interrupt flag
-            TMR2IF = 0;
 
             // Reload the TMR2 value
             TMR2_Reload();

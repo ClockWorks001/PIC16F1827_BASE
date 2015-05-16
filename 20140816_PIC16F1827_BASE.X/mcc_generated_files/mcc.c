@@ -13,16 +13,16 @@
   @Description:
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.0.1
+        Product Revision  :  MPLAB® Code Configurator - v2.25
         Device            :  PIC16F1827
         Driver Version    :  1.02
     The generated drivers are tested against the following:
-        Compiler          :  XC8 v1.31
-        MPLAB             :  MPLAB X 2.10
+        Compiler          :  XC8 v1.34
+        MPLAB             :  MPLAB X v2.35 or v3.00
 */
 
 /*
-Copyright (c) 2013 - 2014 released Microchip Technology Inc.  All rights reserved.
+Copyright (c) 2013 - 2015 released Microchip Technology Inc.  All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
@@ -52,7 +52,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #pragma config PWRTE = OFF    // Power-up Timer Enable->PWRT disabled
 #pragma config FOSC = INTOSC    // Oscillator Selection->INTOSC oscillator: I/O function on CLKIN pin
 #pragma config FCMEN = ON    // Fail-Safe Clock Monitor Enable->Fail-Safe Clock Monitor is enabled
-#pragma config MCLRE = OFF    // MCLR Pin Function Select->MCLR/VPP pin function is digital input
+#pragma config MCLRE = ON    // MCLR Pin Function Select->MCLR/VPP pin function is MCLR
 #pragma config CP = OFF    // Flash Program Memory Code Protection->Program memory code protection is disabled
 #pragma config CPD = OFF    // Data Memory Code Protection->Data memory code protection is disabled
 #pragma config WDTE = OFF    // Watchdog Timer Enable->WDT disabled
@@ -74,13 +74,13 @@ void SYSTEM_Initialize(void)
     TMR2_Initialize();
     EPWM2_Initialize();
     TMR1_Initialize();
+    EUSART_Initialize();
 }
-
 
 void OSCILLATOR_Initialize(void)
 {
-    // SPLLEN disabled; SCS FOSC; IRCF 125KHz_HF; 
-    OSCCON = 0x40;
+    // SPLLEN disabled; SCS INTOSC; IRCF 16MHz_HF; 
+    OSCCON = 0x7A;
     // OSTS intosc; HFIOFR disabled; HFIOFS not0.5percent_acc; PLLR disabled; T1OSCR disabled; MFIOFR disabled; HFIOFL not2percent_acc; LFIOFR disabled; 
     OSCSTAT = 0x00;
     // TUN 0x0; 
@@ -88,6 +88,7 @@ void OSCILLATOR_Initialize(void)
     // Set the secondary oscillator
     
 }
+
 /**
  End of File
 */

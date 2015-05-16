@@ -13,16 +13,16 @@
   @Description
     This source file provides APIs for TMR1.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.0.1
+        Product Revision  :  MPLAB® Code Configurator - v2.25
         Device            :  PIC16F1827
         Driver Version    :  2.00
     The generated drivers are tested against the following:
-        Compiler          :  XC8 v1.31
-        MPLAB             :  MPLAB X 2.10
+        Compiler          :  XC8 v1.34
+        MPLAB             :  MPLAB X v2.35 or v3.00
 */
 
 /*
-Copyright (c) 2013 - 2014 released Microchip Technology Inc.  All rights reserved.
+Copyright (c) 2013 - 2015 released Microchip Technology Inc.  All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
@@ -50,7 +50,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 #include <xc.h>
 #include "tmr1.h"
-#include "../vCLOCK01.h"
+#include "../vClock01.h"
 
 /**
   Section: Global Variables Definitions
@@ -65,26 +65,29 @@ void TMR1_Initialize(void)
 {
     //Set the Timer to the options selected in the GUI
 
-    //T1OSCEN disabled; nT1SYNC synchronize; T1CKPS 1:2; TMR1CS FOSC; TMR1ON disabled; 
-    T1CON = 0x50;
+    //T1OSCEN disabled; nT1SYNC synchronize; T1CKPS 1:8; TMR1CS FOSC; TMR1ON disabled; 
+    T1CON = 0x70;
 
     //T1GVAL disabled; T1GSPM disabled; T1GSS T1G; T1GTM disabled; T1GPOL low; TMR1GE disabled; T1GGO done; 
     T1GCON = 0x00;
 
-    //TMR1H 253; 
-    TMR1H = 0xFD;
+    //TMR1H 177; 
+    TMR1H = 0xB1;
 
-    //TMR1L 143; 
-    TMR1L = 0x8F;
+    //TMR1L 224; 
+    TMR1L = 0xE0;
 
     // Load the TMR value to reload variable
-    timer1ReloadVal=TMR1;
+    timer1ReloadVal=(TMR1H << 8) | TMR1L;
 
     // Clearing IF flag before enabling the interrupt.
     PIR1bits.TMR1IF = 0;
 
     // Enabling TMR1 interrupt.
     PIE1bits.TMR1IE = 1;
+
+    // Start TMR1
+    TMR1_StartTimer();
 }
 
 void TMR1_StartTimer(void)
@@ -103,7 +106,7 @@ uint16_t TMR1_ReadTimer(void)
 {
     uint16_t readVal;
 
-    readVal = TMR1;
+    readVal = (TMR1H << 8) | TMR1L;
 
     return readVal;
 }
@@ -153,10 +156,11 @@ void TMR1_ISR(void)
     // Clear the TMR1 interrupt flag
     PIR1bits.TMR1IF = 0;
 
-    TMR1 += timer1ReloadVal;
+    TMR1H = (timer1ReloadVal >> 8);
+    TMR1L = timer1ReloadVal;
 
     // Add your TMR1 interrupt custom code
-	vClock01_interrupt();
+    vClock01_interrupt();
 }
 
 /**

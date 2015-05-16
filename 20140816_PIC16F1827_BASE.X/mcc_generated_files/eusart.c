@@ -1,17 +1,17 @@
 /**
-  ECCP2 Generated Driver File
+  EUSART Generated Driver File
 
   @Company
     Microchip Technology Inc.
 
   @File Name
-    eccp2.c
+    eusart.c
 
   @Summary
-    This is the generated driver implementation file for the ECCP2 driver using MPLAB® Code Configurator
+    This is the generated driver implementation file for the EUSART driver using MPLAB® Code Configurator
 
   @Description
-    This source file provides APIs for ECCP2.
+    This header file provides implementations for driver APIs for EUSART.
     Generation Information :
         Product Revision  :  MPLAB® Code Configurator - v2.25
         Device            :  PIC16F1827
@@ -44,90 +44,73 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
 */
 
-#ifndef _EPWM2_H
-#define _EPWM2_H
-
 /**
   Section: Included Files
 */
-
-#include <xc.h>
-#include <stdint.h>
-
-#ifdef __cplusplus  // Provide C++ Compatibility
-
-    extern "C" {
-
-#endif
+#include "eusart.h"
 
 /**
-  Section: EPWM Module APIs
+  Section: EUSART APIs
 */
 
-  /**
-  @Summary
-    Initializes the EPWM2
+void EUSART_Initialize(void)
+{
+    // Set the EUSART module to the options selected in the user interface.
 
-  @Description
-    This routine initializes the EPWM2_Initialize.
-    This routine must be called before any other ECCP2 routine is called.
-    This routine should only be called once during system initialization.
+    // ABDEN disabled; WUE disabled; RCIDL idle; ABDOVF no_overflow; SCKP async_noninverted_sync_fallingedge; BRG16 16bit_generator; 
+    BAUDCON = 0x48;
 
-  @Preconditions
-    None
+    // ADDEN disabled; RX9 8-bit; RX9D 0x0; FERR no_error; CREN disabled; SPEN enabled; SREN disabled; OERR no_error; 
+    RCSTA = 0x80;
 
-  @Param
-    None
+    // CSRC slave_mode; TRMT TSR_empty; TXEN enabled; BRGH hi_speed; SYNC asynchronous; SENDB sync_break_complete; TX9D 0x0; TX9 8-bit; 
+    TXSTA = 0x26;
 
-  @Returns
-    None
+    // Baud Rate = 57600; SPBRGL 68; 
+    SPBRGL = 0x44;
 
-  @Comment
-    
+    // Baud Rate = 57600; SPBRGH 0; 
+    SPBRGH = 0x00;
 
- @Example
-    <code>
-    uint16_t dutycycle;
+}
 
-    EPWM2_Initialize();
-    EPWM2_LoadDutyValue(dutycycle);
-    </code>
- */
-void EPWM2_Initialize(void);
 
-/**
-  @Summary
-    Loads 16-bit duty cycle.
+uint8_t EUSART_Read(void)
+{
 
-  @Description
-    This routine loads the 16 bit duty cycle value.
-
-  @Preconditions
-    EPWM2_Initialize() function should have been called before calling this function.
-
-  @Param
-    Pass in 16bit duty cycle value.
-
-  @Returns
-    None
-
-  @Example
-    <code>
-    uint16_t dutycycle;
-
-    EPWM2_Initialize();
-    EPWM2_LoadDutyValue(dutycycle);
-    </code>
-*/
-void EPWM2_LoadDutyValue(uint16_t dutyValue);
-
-#ifdef __cplusplus  // Provide C++ Compatibility
-
+    while(!PIR1bits.RCIF)
+    {
     }
 
-#endif
+    if(1 == RCSTAbits.OERR)
+    {
+        // EUSART error - restart
 
-#endif  // _EPWM2_H
+        RCSTAbits.CREN = 0; 
+        RCSTAbits.CREN = 1; 
+    }
+
+    return RCREG;
+}
+
+void EUSART_Write(uint8_t txData)
+{
+    while(0 == PIR1bits.TXIF)
+    {
+    }
+
+    TXREG = txData;    // Write the data byte to the USART.
+}
+
+char getch(void)
+{
+    return EUSART_Read();
+}
+
+void putch(char txData)
+{
+    EUSART_Write(txData);
+}
 /**
- End of File
+  End of File
 */
