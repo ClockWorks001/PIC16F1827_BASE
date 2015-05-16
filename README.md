@@ -7,12 +7,12 @@ This is a base & demo sample project for PIC16F1827.
 The [PIC16F1827][1] is a very low-cost 8-bit microcontroller with a good
 amount of RAM, many peripherals. CPU Speed 8 MIPS / 32Mhz. RAM 384 Bytes. ROM 7 KBytes.
 
-I use following peripherals for this BASE project.
-  *TMR1     :with interrupt. LED3 is blinked at 1 second interval.)
-  *TMR2     :for PWM
-  *ECCP2    :with TMR2. I use it for PWM output. Outputs are LED4, LED5. They are blinked at 1 second interval.
-  *GPIO     :input x2 for Switches, output x3 for LED1, LED2, LED3
-  *EUSART   :serial console with 57600bps / NRZ
+I use following peripherals for this BASE project.  
+  *TMR1     :with interrupt. LED3 is blinked at 1 second interval.  
+  *TMR2     :for PWM.  
+  *ECCP2    :with TMR2. I use it for PWM output. Outputs are LED4, LED5. They are blinked at 1 second interval.  
+  *GPIO     :input x2 for Switches, output x3 for LED1, LED2, LED3.  
+  *EUSART   :serial console with 57600bps / NRZ.  
   
 Other references.
   <https://docs.google.com/spreadsheets/d/18XYdP4BuEywOxAiw3yl_UnsTUrufz0ivfIZZy-oGmS4/edit?usp=sharing>
@@ -24,10 +24,10 @@ Other references.
 
 ## Prerequisites
 
-I created this project using the free versions of the following tools:
- * [Microchip MPLAB X][2] (v2.35)
- * [Microchip XC8 Compiler][3] (v1.34)
- * [MPLAB Code Configurator][4] (v2.25)(installed as plugin within MPLAB X)
+I created this project using the free versions of the following tools:  
+ * [Microchip MPLAB X][2] (v2.35)  
+ * [Microchip XC8 Compiler][3] (v1.34)  
+ * [MPLAB Code Configurator][4] (v2.25)(installed as plugin within MPLAB X)  
 
 You will need to download and install these tools appropriately before you
 can open this project and build it.
